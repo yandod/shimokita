@@ -12,8 +12,13 @@ module Shimokita
   end
 end
 
-filename = '/Users/kabayaki91/github/CakePHP2.0practicalguide/chapter01/readme.md'
-outputpath = './out/'
+if ARGV.size != 2 then
+  puts "shimokita.rb [markdown file] [output path]"
+  exit
+end
+
+filename = ARGV[0]
+outputpath = ARGV[1]
 mdown_src = File.read(filename);
 start = false;
 buff = '';
