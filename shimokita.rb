@@ -19,10 +19,9 @@ end
 
 filename = ARGV[0]
 outputpath = ARGV[1]
-mdown_src = File.read(filename);
-start = false;
-buff = '';
-num = 0;
+mdown_src = File.read(filename)
+start = false
+num = 0
 fp = nil
 
 Kramdown::Document.new(mdown_src).to_html.split("\n").each do |line|
