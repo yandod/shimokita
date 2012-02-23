@@ -4,11 +4,15 @@ require 'cgi'
 
 module Shimokita
   def self.generateFileName(num)
-    'file' + num.to_string + '.txt'
+    'file' + num.to_s + '.txt'
   end
   
   def self.extractFileName(line)
-    line.split(" ").last
+    list = line.split(" ")
+    if (list.count == 1) then
+      return false
+    end
+    list.last
   end
 end
 
@@ -39,7 +43,7 @@ Kramdown::Document.new(mdown_src).to_html.split("\n").each do |line|
   # find open tag for code.
   if !start && line.include?("<pre><code>") then
     outfilename = Shimokita.extractFileName(line)
-    if outfilename.length == 0 then
+    if outfilename == false then
       outfilename = Shimokita.generateFileName(num)
     end
     start = true
