@@ -4,7 +4,7 @@ require 'cgi'
 
 module Shimokita
   def self.generateFileName(num)
-    'file' + num.to_s + '.txt'
+    'file' + sprintf("%04d",num) + '.txt'
   end
   
   def self.extractFileName(line)
@@ -25,7 +25,7 @@ filename = ARGV[0]
 outputpath = ARGV[1]
 mdown_src = File.read(filename)
 start = false
-num = 0
+num = 1 
 fp = nil
 
 Kramdown::Document.new(mdown_src).to_html.split("\n").each do |line|
