@@ -24,6 +24,7 @@ end
 filename = ARGV[0]
 outputpath = ARGV[1]
 mdown_src = File.read(filename)
+extract_name = false
 start = false
 num = 1 
 fp = nil
@@ -43,7 +44,7 @@ Kramdown::Document.new(mdown_src).to_html.split("\n").each do |line|
   # find open tag for code.
   if !start && line.include?("<pre><code>") then
     outfilename = Shimokita.extractFileName(line)
-    if outfilename == false then
+    if outfilename == false or extract_name == false then
       outfilename = Shimokita.generateFileName(num)
     end
     start = true
