@@ -1,0 +1,8 @@
+p 'hello test'
+ 	
+print("hello, Ruby !\n\n\n\n\n")
+print("hello, Ruby !  ")
+ 	
+puts("hello Ruby")
+puts("a")
+puts("hello Ruby")
